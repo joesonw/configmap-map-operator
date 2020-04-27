@@ -1,0 +1,107 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "operators.dstream.cloud/v1alpha1",
+          "kind": "ConfigMapMap",
+          "metadata": {
+            "name": "example-configmapmap"
+          },
+          "spec": {
+            "name": "example-config"
+          }
+        }
+      ]
+    capabilities: Basic Install
+  name: configmap-map-operator.v0.1.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+    - description: ConfigMapMap is the Schema for the configmapmaps API
+      kind: ConfigMapMap
+      name: configmapmaps.operators.dstream.cloud
+      version: v1alpha1
+  description: Placeholder description
+  displayName: Configmap Map Operator
+  install:
+    spec:
+      deployments:
+      - name: configmap-map-operator
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              name: configmap-map-operator
+          strategy: {}
+          template:
+            metadata:
+              labels:
+                name: configmap-map-operator
+            spec:
+              containers:
+              - command:
+                - configmap-map-operator
+                env:
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.annotations['olm.targetNamespaces']
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: OPERATOR_NAME
+                  value: configmap-map-operator
+                image: quay.io/dstreamcloud/configmap-map-operator:latest
+                imagePullPolicy: Always
+                name: configmap-map-operator
+                resources: {}
+              serviceAccountName: configmap-map-operator
+      permissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          - configmaps
+          - secrets
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        - apiGroups:
+          - operators.dstream.cloud
+          resources:
+          - '*'
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: configmap-map-operator
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: true
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  maturity: alpha
+  provider: {}
+  replaces: configmap-map-operator.v0.0.0
+  version: 0.1.0

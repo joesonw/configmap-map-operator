@@ -1,0 +1,6 @@
+apiVersion: operators.dstream.cloud/v1alpha1
+kind: ConfigMapMap
+metadata:
+  name: example-configmapmap
+spec:
+  name: example-config
