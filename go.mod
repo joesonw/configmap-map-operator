@@ -1,4 +1,4 @@
-module github.com/dstreamcloud/configmap-map-operator
+module github.com/joesonw/configmap-map-operator
 
 go 1.13
 

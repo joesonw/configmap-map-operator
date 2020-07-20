@@ -11,9 +11,9 @@ import (
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	"k8s.io/client-go/rest"
 
-	"github.com/dstreamcloud/configmap-map-operator/pkg/apis"
-	"github.com/dstreamcloud/configmap-map-operator/pkg/controller"
-	"github.com/dstreamcloud/configmap-map-operator/version"
+	"github.com/joesonw/configmap-map-operator/pkg/apis"
+	"github.com/joesonw/configmap-map-operator/pkg/controller"
+	"github.com/joesonw/configmap-map-operator/version"
 
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	kubemetrics "github.com/operator-framework/operator-sdk/pkg/kube-metrics"

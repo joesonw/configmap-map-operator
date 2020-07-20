@@ -16,7 +16,7 @@ spec:
       containers:
         - name: configmap-map-operator
           # Replace this with the built image name
-          image: quay.io/dstreamcloud/configmap-map-operator:latest
+          image: joesonw/configmap-map-operator:latest
           command:
           - configmap-map-operator
           imagePullPolicy: Always

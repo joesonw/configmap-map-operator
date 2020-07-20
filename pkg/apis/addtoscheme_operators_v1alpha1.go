@@ -1,7 +1,7 @@
 package apis
 
 import (
-	"github.com/dstreamcloud/configmap-map-operator/pkg/apis/operators/v1alpha1"
+	"github.com/joesonw/configmap-map-operator/pkg/apis/operators/v1alpha1"
 )
 
 func init() {

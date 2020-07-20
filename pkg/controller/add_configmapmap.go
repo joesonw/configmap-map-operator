@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/dstreamcloud/configmap-map-operator/pkg/controller/configmapmap"
+	"github.com/joesonw/configmap-map-operator/pkg/controller/configmapmap"
 )
 
 func init() {
